@@ -1,0 +1,5 @@
+.react-flow__edge-path {
+    stroke-dasharray: 0 !important;
+    stroke-width: 2px !important; /* Adjust the width as per your requirement */
+    stroke: red !important;
+  }
