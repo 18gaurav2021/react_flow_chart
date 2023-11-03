@@ -1,11 +1,20 @@
-import ReactFlowRenderer from "./ReactFlowRenderer";
-import "antd/dist/antd.css";
-function App() {
+import React, { useState } from "react";
+
+import DnDFlow from "./Dndflow";
+
+
+import "./styles.css";
+
+
+
+const App = () => {
+  
+
   return (
-    <div>
-      <ReactFlowRenderer />
+    <div className="dndflow-wrapper">
+      <DnDFlow />
     </div>
   );
-}
+};
 
 export default App;
