@@ -7,17 +7,10 @@ import ReactFlow, {
   removeElements,
   
 } from "react-flow-renderer";
-
-
-
 import Sidebar from "./Sidebar";
 import clinetData from "./clientData.json";
 import EditNodeModal from "./EditNodeModal";
 import EditEdgeModal from "./EditEdgeModal";
-
-
-
-
 const initialElements = [
   {
     id: "1",
@@ -76,8 +69,6 @@ const generateEdgesFromValueChain = (valuChain) => {
 
 let id = 0;
 const getId = () => `dndnode_${id++}`;
-
-
 const arrowMarker = (
   <svg
     width="8px"
@@ -101,10 +92,6 @@ const arrowMarker = (
     </defs>
   </svg>
 );
-
-
-
-
 const DnDFlow = () => {
   const [paneMoveable] = useState(false);
   const [panOnScroll] = useState(true);
@@ -112,15 +99,7 @@ const DnDFlow = () => {
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
   const [elements, setElements] = useState(initialElements);
   const [selectedNode, setSelectedNode] = useState(null);
-
   const [selectedEdge, setSelectedEdge] = useState(null);
-
-
-  
-
-
-  
-
   const onLoad = (_reactFlowInstance) => {
     setReactFlowInstance(_reactFlowInstance);
 
@@ -137,36 +116,10 @@ const DnDFlow = () => {
   const onConnect = (params) => setElements((els) => addEdge(params, els));
   const onElementsRemove = (elementsToRemove) =>
     setElements((els) => removeElements(elementsToRemove, els));
-
- 
-
   const onDragOver = (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   };
-
-  // const onDrop = (event) => {
-  //   event.preventDefault();
-
-  //   const reactFlowBounds = reactFlowWrapper.current.getBoundingClientRect();
-  //   const type = event.dataTransfer.getData("application/reactflow");
-  //   const position = reactFlowInstance.project({
-  //     x: event.clientX - reactFlowBounds.left,
-  //     y: event.clientY - reactFlowBounds.top
-  //   });
-  //   const newNode = {
-  //     id: getId(),
-  //     type,
-  //     position,
-  //     sourcePosition: "right",
-  //     targetPosition: "left",
-  //     data: { label: `${type} node` }
-  //   };
-
-  //   setElements((es) => es.concat(newNode));
-  // };
-
-
   const onDrop = (event) => {
     event.preventDefault();
 
@@ -187,12 +140,7 @@ const DnDFlow = () => {
     };
 
     setElements((es) => es.concat(newNode));
-};
-
-
- 
-
-  const onNodeDoubleClick = (_, node) => {
+};  const onNodeDoubleClick = (_, node) => {
     setSelectedNode(node);
   };
 
@@ -217,32 +165,13 @@ const DnDFlow = () => {
   const handleCloseModal = () => {
     setSelectedNode(null);
   };
-
-
-
-  // const onNodeClick = (event, element) => {
-  //   setSelectedNode(element);
-  // };
-
-  // const onDeleteNode = () => {
-  //   const confirmation = window.confirm("Are you sure you want to delete this node?");
-  //   if (confirmation) {
-  //     const newElements = elements.filter(el => el.id !== selectedNode.id);
-  //     setElements(newElements);
-  //     setSelectedNode(null);  // Clear selected node after deleting
-  //   }
-  // };
-
-
+};
   const onDeleteNode = (node) => {
     const newElements = elements.filter(el => el.id !== node.id);
     setElements(newElements);
     setSelectedNode(null); // Clear selected node after deleting
   };
-
-
-  //edge related code 
-
+  //edge related code
   const onEdgeDoubleClick = (_, edge) => {
     setSelectedEdge(edge);
   };
@@ -271,10 +200,8 @@ const DnDFlow = () => {
   
 
   return (
-    <div className="dndflow">
-      
+    <div className="dndflow">      
        {arrowMarker} 
-
         {selectedNode && (
         <EditNodeModal
           node={selectedNode}
@@ -283,8 +210,6 @@ const DnDFlow = () => {
           onDelete={onDeleteNode}
         />
       )}
-
-
 {selectedEdge && (
   <EditEdgeModal
     edge={selectedEdge}
