@@ -1,14 +1,5 @@
 // EditEdgeModal.js
 import React, { useState } from 'react';
-
-// const EditEdgeModal = ({ edge, onSave, onClose, onDelete }) => {
-//   const [edgeLabel, setEdgeLabel] = useState(edge.label || '');
-
-//   const handleSaveClick = () => {
-//     onSave(edge, edgeLabel);
-//   };
-
-
 const EditEdgeModal = ({ edge, onSave, onClose, onDelete }) => {
     const [edgeLabel, setEdgeLabel] = useState(edge.label || '');
   
